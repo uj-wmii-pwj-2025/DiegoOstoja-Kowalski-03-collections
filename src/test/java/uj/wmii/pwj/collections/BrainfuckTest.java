@@ -46,7 +46,7 @@ public class BrainfuckTest {
     @ParameterizedTest(name = "{index} {0}")
     @MethodSource("brainfuckInput")
     @DisplayName("Programs execution")
-    void brainfuckProgram(String testName, String program, String inString, int stackSize, String expectedResult, ExceptionExpectancy exceptionExpectancy) {
+    void brainfuckProgram(String testName, String program, String inString, int stackSize, String expectedResult, ExceptionExpectancy exceptionExpectancy) throws IOException {
         var out = expectedResult != null ? new ByteArrayOutputStream(expectedResult.length()) : null;
         var in = inString != null ? new ByteArrayInputStream(inString.getBytes()) : System.in;
         Brainfuck bf = Brainfuck.createInstance(program, out != null ? new PrintStream(out): System.out, in, stackSize);
